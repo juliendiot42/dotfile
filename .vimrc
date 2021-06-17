@@ -39,6 +39,10 @@ set showmode
 " Show command being executed
 set showcmd
 
+" Always show status line
+set laststatus=2
+
+
 " Show line number
 set number
 set relativenumber
@@ -63,8 +67,21 @@ set ignorecase
 " Ignore case unless there is an uppercase letter in the pattern
 set smartcase
 
+" ignore case when opening files" 
+set wildignorecase
+
+" Set completion behavior, see :help wildmode for details
+set wildmode=longest:full,list:full
+
+
 " Insert spaces instead of tabs
 set expandtab
+
+" Color the column after textwidth, usually the 80th
+if version >= 703
+  set colorcolumn=+1
+endif
+
 
 " Set basic indenting (i.e. copy the indentation of the previous line)
 " When filetype detection didn't find a fancy indentation scheme
@@ -73,10 +90,22 @@ set autoindent
 " Allow mouse use in vim
 set mouse=a
 
+" Enable filetype detection for plugins and indentation options
+filetype plugin indent on
 
+" Reload a file when it is changed from the outside
+set autoread
 
 " Use a slightly darker background color to differentiate with the status line
 let g:jellybeans_background_color_256='232'
 
 " Feel free to switch to another colorscheme
 colorscheme jellybeans
+
+" Force encoding to utf-8, for systems where this is not the default (windows
+" comes to mind)
+set encoding=utf-8
+
+" Disable swapfiles too
+set noswapfile
+
