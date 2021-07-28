@@ -46,6 +46,7 @@ set laststatus=2
 " Show line number
 set number
 set relativenumber
+set ruler
 
 " Enables syntax highlighting
 syntax on
@@ -108,4 +109,7 @@ set encoding=utf-8
 
 " Disable swapfiles too
 set noswapfile
+
+" custom macro:
+let @q='Bi"€ýaea"€ýa'
 
