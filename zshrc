@@ -10,7 +10,7 @@ source /etc/profile
 export ZSH="/home/julien/.oh-my-zsh"
 
 source /home/julien/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/julien/.zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source /home/julien/.zsh-autocomplete/zsh-autocomplete.plugin.zsh
 export PATH="$HOME/anaconda3/bin:$PATH"
 
 
@@ -79,7 +79,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # pure theme: Do not enable the following (incompatible) plugins: vi-mode, virtualenv.
-plugins=(git sudo python colorize aliases vi-mode )
+plugins=(git sudo python colorize aliases vi-mode z)
 
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
@@ -113,5 +113,24 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias aptup="sudo apt update && apt list --upgradable"
 alias gitfuckit="git commit -a -m \"¯\\_(ツ)_/¯\""
-alias ttttes="echo \"¯\\_(ツ)_/¯\""
+alias gitlog="git log --oneline"
+# The following lines were added by compinstall
 
+zstyle ':completion:*' auto-description '%d'
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle ':completion:*' completions 1
+zstyle ':completion:*' format '%d'
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' menu select=5
+zstyle ':completion:*' original true
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' substitute 1
+zstyle :compinstall filename '/home/julien/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall

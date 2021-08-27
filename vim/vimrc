@@ -1,0 +1,282 @@
+" Acknowledgements:
+"   Several elements of this .vimrc come from Kévin Chewie Sztern's config
+"   You can find it here: https://github.com/Chewie/dotfiles/blob/master/vim/.vimrc
+
+
+
+
+" Install vim-plug if we don't already have it
+" Credit to github.com/captbaritone
+if empty(glob("~/.vim/autoload/plug.vim"))
+    " Ensure all needed directories exist  (Thanks @kapadiamush)
+    execute '!mkdir -p ~/.vim/plugged'
+    execute '!mkdir -p ~/.vim/autoload'
+    " Download the actual plugin manager
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Theming
+" Plug 'nanotech/jellybeans.vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Plugin for R
+Plug 'jalvesaq/Nvim-R'
+Plug 'mllg/vim-devtools-plugin'
+
+" 'IDE' features
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+Plug 'SirVer/ultisnips'
+Plug 'dense-analysis/ale'
+Plug 'ackyshake/VimCompletesMe'
+Plug 'vim-scripts/AutoComplPop'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" other
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-obsession'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+call plug#end()
+
+set nocompatible
+
+" backspace normal behaviour
+set backspace=indent,eol,start
+
+
+
+" Color Theme
+
+" Colorscheme jellybeans
+" let g:airline_theme='jellybeans'
+" Use a slightly darker background color to differentiate with the status line
+" let g:jellybeans_background_color_256='232'
+
+" Colorscheme CodeDark
+set t_Co=256
+set t_ut=
+colorscheme codedark
+let g:airline_theme = 'codedark'
+
+" fix nerdtree icons brackets
+set conceallevel=3
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
+
+"nerdtree icons
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
+
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
+
+" gui font
+if has("gui_running")
+    set guifont=FiraCode\ Nerd\ Font\ 16
+endif
+
+set renderoptions=type:directx
+
+" Set the minimal amount of lines under and above the cursor
+" Useful for keeping context when moving with j/k
+set scrolloff=5
+
+" Show current mode
+set showmode
+
+" Show command being executed
+set showcmd
+
+" Always show status line
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
+" Show line number
+set number
+set relativenumber
+set ruler
+
+" add empty line at end of file
+set fixendofline
+
+" Enables syntax highlighting
+syntax on
+let g:ale_set_highlights=1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'r': ['styler'],
+\}
+
+" Desktop/epicThaiWah.md
+" Display whitespace characters
+set listchars=tab:>─,eol:¬,trail:·,nbsp:¤,space:·
+set fillchars=vert:│
+set list
+hi clear SpecialKey
+hi SpecialKey term=bold ctermfg=240 ctermbg=234 guifg=#5A5A5A guibg=#1E1E1E
+hi clear NonText
+hi NonText term=bold ctermfg=240 ctermbg=234 guifg=#5A5A5A guibg=#1E1E1E
+set cursorline
+
+" Briefly show matching braces, parens, etc
+set showmatch
+
+" Ignore case on search
+set ignorecase
+" Ignore case unless there is an uppercase letter in the pattern
+set smartcase
+
+" highlight search
+set incsearch
+set nohlsearch
+" toggle hlsearch with ,h
+nnoremap <leader>hl :set hlsearch!<cr> 
+" highlight search when typing even if hlsearch is off (see :h 'incsearch')
+augroup vimrc-incsearch-highlight
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+
+" ignore case when opening files
+set wildignorecase
+
+" Set completion behavior, see :help wildmode for details
+"set wildmode=list:longest
+set wildmode=list:full
+
+" For clever completion with the :find command
+set path+=**
+
+" spellchecking
+set spell
+hi clear SpellBad
+hi clear SpellCap
+hi clear SpellRare
+hi clear SpellLocal
+hi SpellBad cterm=underline
+hi SpellCap cterm=underline
+hi SpellRare cterm=underline
+hi SpellLocal cterm=underline
+
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+" Color the column after textwidth, usually the 80th
+if version >= 703
+  set colorcolumn=+1
+endif
+
+
+" Set basic indenting (i.e. copy the indentation of the previous line)
+" When filetype detection didn't find a fancy indentation scheme
+set autoindent
+
+" Allow mouse use in vim
+set mouse=a
+
+" Enable filetype detection for plugins and indentation options
+filetype plugin indent on
+
+" Reload a file when it is changed from the outside
+set autoread
+
+
+" Force encoding to utf-8, for systems where this is not the default (windows
+" comes to mind)
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Disable swapfiles too
+set noswapfile
+
+" Reload a file when it is changed from the outside
+set autoread
+
+
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" gitgutter
+set updatetime=100
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+highlight diffAdd    guifg=#009900 ctermfg=2
+highlight diffChanged guifg=#bbbb00 ctermfg=3
+highlight diffRemoved guifg=#ff2222 ctermfg=1
+" highlight GitGutterAddIntraLine guifg=#009900  ctermfg=2
+" highlight GitGutterDeleteIntraLine guifg=#ff2222 ctermfg=1
+
+" custom macro:
+
+" completion:
+autocmd FileType vim let b:vcm_tab_complete = 'vim'
+autocmd FileType r let b:vcm_tab_complete = 'omni'
+set complete+=kspell
+set completeopt=menuone,longest
+inoremap <expr> <Tab> pumvisible() ? "<C-y>" : "<Tab>"
+
+
+" start R in vim working dir
+let R_nvim_wd=1
+let R_nvimpager='vertical'
+let R_rconsole_width = 50
+let R_min_editor_width = 1
+let R_objbr_place='console,below'
+
+" fix meta-keys which generate <Esc>- 
+let c='-'
+exec "set <M-".toupper(c).">=\e".c
+exec "imap \e".c." <M-".toupper(c).">"
+
+" line at 80 char
+set colorcolumn=80
+
+" netrw config
+" au FileType netrw nmap <buffer> l <cr> "use space to open file/folders"
+let g:netrw_banner=0 "disable banner"
+let g:netrw_liststyle=3 " tree view"
+let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_hide=1
+
+
+" key mapping:
+
+"Newlines
+nnoremap <C-j> o<ESC>
+nnoremap <C-k> O<ESC>
+
+" insert space from normal mode
+nnoremap <C-Space> i 
+
+" Map Ctrl-Backspace to delete the previous word in insert mode.
+" imap <C-BS> <C-w>
+" noremap! <C-BS> <C-w>
+" noremap! <C-h> <C-w>
+
+" Search selected text
+vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
+" better behaviour of n and N J
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
