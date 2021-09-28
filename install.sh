@@ -4,7 +4,7 @@
 
 # VIM
 rm ~/.vimrc
-rm -r ~/.vim/vimrc
+rm ~/.vim/vimrc
 ln -s "$(pwd)"/vim/vimrc ~/.vim/vimrc
 rm -r ~/.vim/UltiSnips
 ln -s "$(pwd)"/vim/UltiSnips ~/.vim/UltiSnips
@@ -17,4 +17,8 @@ ln -s "$(pwd)"/zshrc ~/.zshrc
 
 # CTAGS
 rm ~/.ctags
-ln -s "$(pwd)"/ctags ~/ctags
+ln -s "$(pwd)"/ctags ~/.ctags
+
+# terminator
+rm -r ~/.config/terminator 
+ln -s "$(pwd)"/terminator ~/.config/terminator 

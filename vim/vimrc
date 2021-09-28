@@ -42,6 +42,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 " Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-obsession'
+Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -67,6 +68,13 @@ set t_Co=256
 set t_ut=
 colorscheme codedark
 let g:airline_theme = 'codedark'
+
+" Change cursor Color when entering Insert Mode
+autocmd InsertEnter * highlight Cursor guibg=#FFAF00
+" Revert cursor Color to default when leaving Insert Mode
+autocmd InsertLeave * highlight Cursor guibg=#AEAFAD
+
+
 
 " fix nerdtree icons brackets
 set conceallevel=3
@@ -187,9 +195,17 @@ endif
 " Set basic indenting (i.e. copy the indentation of the previous line)
 " When filetype detection didn't find a fancy indentation scheme
 set autoindent
+set smartindent
 
 " Allow mouse use in vim
 set mouse=a
+
+
+
+
+
+
+
 
 " Enable filetype detection for plugins and indentation options
 filetype plugin indent on
@@ -226,6 +242,13 @@ highlight diffChanged guifg=#bbbb00 ctermfg=3
 highlight diffRemoved guifg=#ff2222 ctermfg=1
 " highlight GitGutterAddIntraLine guifg=#009900  ctermfg=2
 " highlight GitGutterDeleteIntraLine guifg=#ff2222 ctermfg=1
+
+
+
+
+
+
+
 
 " custom macro:
 
