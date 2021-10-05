@@ -36,6 +36,7 @@ Plug 'dense-analysis/ale'
 Plug 'ackyshake/VimCompletesMe'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ap/vim-css-color'
 
 " other
 Plug 'jiangmiao/auto-pairs'
@@ -54,7 +55,9 @@ set nocompatible
 " backspace normal behaviour
 set backspace=indent,eol,start
 
-
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar
 
 " Color Theme
 
@@ -69,11 +72,11 @@ set t_ut=
 colorscheme codedark
 let g:airline_theme = 'codedark'
 
-" Change cursor Color when entering Insert Mode
+
+" Change cursor Color when entering Insert Mode (gui only)
 autocmd InsertEnter * highlight Cursor guibg=#FFAF00
 " Revert cursor Color to default when leaving Insert Mode
 autocmd InsertLeave * highlight Cursor guibg=#AEAFAD
-
 
 
 " fix nerdtree icons brackets
@@ -136,7 +139,7 @@ hi clear SpecialKey
 hi SpecialKey term=bold ctermfg=240 ctermbg=234 guifg=#5A5A5A guibg=#1E1E1E
 hi clear NonText
 hi NonText term=bold ctermfg=240 ctermbg=234 guifg=#5A5A5A guibg=#1E1E1E
-set cursorline
+
 
 " Briefly show matching braces, parens, etc
 set showmatch
@@ -282,6 +285,10 @@ let g:netrw_liststyle=3 " tree view"
 let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_hide=1
 
+" custom command
+command CD cd %:p:h
+
+
 
 " key mapping:
 
@@ -293,7 +300,7 @@ nnoremap <C-k> O<ESC>
 nnoremap <C-Space> i 
 
 " Map Ctrl-Backspace to delete the previous word in insert mode.
-" imap <C-BS> <C-w>
+imap <C-BS> <C-w>
 " noremap! <C-BS> <C-w>
 " noremap! <C-h> <C-w>
 
