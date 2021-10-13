@@ -11,7 +11,7 @@ For instalation, run:
 1. Create a new folder containing a link pointing to `nvimcom` package:
 
 ```sh
-mkdir ~/R/nvimcom
+mkdir ~/R/nvimcomlib
 ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/nvimcom/ ~/R/nvimcomlib/nvimcom
 ```
 
@@ -20,4 +20,3 @@ ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/nvimcom/ ~/R/nvimcomlib/nvimcom
 ```
 echo 'RENV_CONFIG_EXTERNAL_LIBRARIES="~/R/nvimcomlib"' >> ~/.Renviron
 ```
-

@@ -95,7 +95,7 @@ let g:webdevicons_enable_airline_statusline = 1
 
 " gui font
 if has("gui_running")
-    set guifont=FiraCode\ Nerd\ Font\ 16
+    set guifont=FiraCode\ Nerd\ Font\ 15
 endif
 
 set renderoptions=type:directx
