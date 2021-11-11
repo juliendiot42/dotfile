@@ -6,10 +6,11 @@ setlocal tabstop=2
 " when indenting with '>', use 2 spaces width
 setlocal shiftwidth=2
 " On pressing tab, insert 2 spaces
-setlocal  expandtab
+setlocal expandtab
 
-" autosave
-set autowrite
+" autosave whenever a file is modified for R and Rmd files
+autocmd TextChanged,TextChangedI *.R silent! update
+autocmd TextChanged,TextChangedI *.Rmd silent! update
 
 " special remap:
 inoremap <M--> <Space><-<Space>
@@ -19,10 +20,10 @@ inoremap <M--> <Space><-<Space>
 
 " Tag R source code:
 " FIRST DO in a treminal:
-" R CMD rtags -o ~/TAGS /opt/R/R-4.0.4/src
+" R CMD rtags -o ~/TAGS /opt/R/R-4.1.1/src
 " Rscript -e 'nvimcom::etags2ctags("~/TAGS", "~/.cache/Nvim-R/Rtags")'
 " rm ~/TAGS
-" ctags --languages=C,Fortran,Java,Tcl -R -f ~/.cache/Nvim-R/RsrcTags /opt/R/R-4.0.4/src
+" ctags --languages=C,Fortran,Java,Tcl -R -f ~/.cache/Nvim-R/RsrcTags /opt/R/R-4.1.1/src
 " 
 " For R packages:
 "  DO NOT WORK

@@ -11,7 +11,7 @@ export ZSH="/home/julien/.oh-my-zsh"
 
 source /home/julien/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /home/julien/.zsh-autocomplete/zsh-autocomplete.plugin.zsh
-export PATH="$HOME/anaconda3/bin:$PATH"
+# export PATH="$HOME/anaconda3/bin:$PATH"  # commented out by conda initialize
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -134,3 +134,19 @@ zstyle :compinstall filename '/home/julien/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
