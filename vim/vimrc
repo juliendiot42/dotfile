@@ -52,6 +52,20 @@ call plug#end()
 
 set nocompatible
 
+
+
+
+" startify bookmarks
+let g:startify_bookmarks = [
+    \'~/Documents/Work/GitRepos/dotfile/',
+    \'~/Documents/Work/1_Projects/SIP/GWAS-Engine/',
+    \'~/Documents/Work/1_Projects/SIP/APIs/GWAS_API/',
+    \'~/Documents/Work/1_Projects/BreedingSimulation/breedSimulatR/',
+    \'~/Documents/Work/1_Projects/BayesianOptimisation/bayesianOptimizationForBreeding/',
+    \'~/.vim/vimrc',
+    \]
+
+
 " backspace normal behaviour
 set backspace=indent,eol,start
 
@@ -95,7 +109,7 @@ let g:webdevicons_enable_airline_statusline = 1
 
 " gui font
 if has("gui_running")
-    set guifont=FiraCode\ Nerd\ Font\ 15
+    set guifont=FiraCode\ Nerd\ Font\ 13
 endif
 
 set renderoptions=type:directx
