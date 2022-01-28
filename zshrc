@@ -6,6 +6,8 @@ umask 007
 
 source /etc/profile
 
+PATH=$PATH:$HOME/.local/bin
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/julien/.oh-my-zsh"
 
@@ -112,8 +114,16 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias aptup="sudo apt update && apt list --upgradable"
+alias aptupg="sudo apt upgrade"
+alias aptin="sudo apt install"
+alias aptrm="sudo apt purge"
+
+alias cp="cp -i"
+alias mv="mv -i"
+
 alias gitfuckit="git commit -a -m \"¯\\_(ツ)_/¯\""
 alias gitlog="git log --oneline"
+alias checkPorts="sudo lsof -i -P -n | grep LISTEN"
 # The following lines were added by compinstall
 
 zstyle ':completion:*' auto-description '%d'
