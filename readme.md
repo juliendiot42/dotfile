@@ -16,7 +16,12 @@ ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/nvimcom/ ~/R/renvExt/nvimcom
 ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/JD.Templates/ ~/R/renvExt/JD.Templates
 ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/prompt/ ~/R/renvExt/prompt
 ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/colorout/ ~/R/renvExt/colorout
+ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/microbenchmark/ ~/R/renvExt/microbenchmark
 ```
+
+
+
+
 
 1. Specify this new library in the `.Renviron` file
 
