@@ -9,9 +9,9 @@ source /etc/profile
 PATH=$PATH:$HOME/.local/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/julien/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-source /home/julien/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /home/julien/.zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # export PATH="$HOME/anaconda3/bin:$PATH"  # commented out by conda initialize
 
