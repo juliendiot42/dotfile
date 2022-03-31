@@ -3,8 +3,16 @@
   title_inactive_bg_color = "#888a85"
   putty_paste_style = True
 [keybindings]
-  page_up_half = <Shift>Page_Up
-  page_down_half = <Shift>Page_Down
+  go_next = <Primary>w
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  split_horiz = <Primary><Alt>j
+  split_vert = <Primary><Alt>l
+  page_up_half = Page_Up
+  page_down_half = Page_Down
+  layout_launcher = <Primary><Shift><Alt>l
 [profiles]
   [[default]]
     background_color = "#121b23"

@@ -7,6 +7,7 @@ umask 007
 source /etc/profile
 
 PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/anaconda3/bin/
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
