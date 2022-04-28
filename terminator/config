@@ -2,6 +2,7 @@
   title_transmit_bg_color = "#3d3846"
   title_inactive_bg_color = "#888a85"
   inactive_color_offset = 0.47648745519713254
+  suppress_multiple_term_dialog = True
   putty_paste_style = True
 [keybindings]
   go_next = <Primary><Shift>w
