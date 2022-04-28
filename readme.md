@@ -17,6 +17,7 @@ ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/JD.Templates/ ~/R/renvExt/JD.Templates
 ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/prompt/ ~/R/renvExt/prompt
 ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/colorout/ ~/R/renvExt/colorout
 ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/microbenchmark/ ~/R/renvExt/microbenchmark
+ln -s ~/R/x86_64-pc-linux-gnu-library/4.1/languageserver/ ~/R/renvExt/languageserver
 ```
 
 

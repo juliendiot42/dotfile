@@ -1,15 +1,17 @@
 [global_config]
   title_transmit_bg_color = "#3d3846"
   title_inactive_bg_color = "#888a85"
+  inactive_color_offset = 0.47648745519713254
   putty_paste_style = True
 [keybindings]
-  go_next = <Primary>w
+  go_next = <Primary><Shift>w
   go_up = <Alt>k
   go_down = <Alt>j
   go_left = <Alt>h
   go_right = <Alt>l
   split_horiz = <Primary><Alt>j
   split_vert = <Primary><Alt>l
+  close_term = ""
   page_up_half = Page_Up
   page_down_half = Page_Down
   layout_launcher = <Primary><Shift><Alt>l
@@ -19,7 +21,7 @@
     background_darkness = 0.9
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = FiraCode Nerd Font weight=453 14
+    font = Fira Code Medium 14
     foreground_color = "#f6f5f4"
     scroll_on_output = True
     scrollback_infinite = True
@@ -30,6 +32,7 @@
     [[[child1]]]
       parent = window0
       type = Terminal
+      profile = default
     [[[window0]]]
       parent = ""
       type = Window
