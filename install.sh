@@ -21,6 +21,10 @@ rm ~/.vim/vimrc
 rm -r ~/.config/nvim
 ln -s "$(pwd)"/nvim ~/.config/nvim
 
+# R-studio
+echo "Rstudio..."
+rm -r ~/.config/rstudio
+ln -s "$(pwd)"/rstudio ~/.config/rstudio
 
 # CTAGS
 echo "CTAGS..."

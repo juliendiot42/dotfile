@@ -1,2 +1,10 @@
-vim/plugged/
-vim/autoload/
+
+
+rstudio/*Cache*
+rstudio/Cookies*
+rstudio/*Storage
+rstudio/Crashpad
+rstudio/TransportSecurity
+rstudio/Network*Persistent*State
+rstudio/Dictionaries
+

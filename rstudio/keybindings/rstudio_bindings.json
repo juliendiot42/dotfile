@@ -1,0 +1,22 @@
+{
+    "pasteLastYank": "",
+    "yankBeforeCursor": "",
+    "executeToCurrentLine": "Ctrl+Shift+Enter",
+    "sourceActiveDocumentWithEcho": "Ctrl+Alt+B",
+    "closeSourceDoc": "Ctrl+W Q",
+    "nextTab": "Ctrl+Tab",
+    "quitSession": "",
+    "debugStep": "",
+    "restartR": "F10",
+    "zoomIn": "",
+    "zoomOut": "",
+    "closeAllSourceDocs": "",
+    "closeOtherSourceDocs": "",
+    "goToFileFunction": "Ctrl+.",
+    "switchFocusSourceConsole": "Ctrl+Shift+W",
+    "layoutZoomConsole": "",
+    "focusSourceColumnSeparator": "",
+    "focusNextPane": "F6",
+    "previousTab": "Ctrl+Shift+Tab",
+    "insertRoxygenSkeleton": "Ctrl+Alt+Shift+R"
+}
