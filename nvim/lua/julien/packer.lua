@@ -50,7 +50,19 @@ return require('packer').startup(function(use)
         'ThePrimeagen/harpoon',
         require = { { 'nvim-lua/plenary.nvim' } }
     })
-
+    -- Lua
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
     -- colorscheme (cf. `after/plugin/colors.lua`)
     use({
         "catppuccin/nvim",
@@ -101,6 +113,13 @@ return require('packer').startup(function(use)
     -- git in vim
     use({
         'tpope/vim-fugitive',
+        cond = notInVScode
+    })
+
+    -- git indications
+    use({
+        -- 'lewis6991/gitsigns.nvim',
+        'lewis6991/gitsigns.nvim',
         cond = notInVScode
     })
 
