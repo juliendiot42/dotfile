@@ -26,6 +26,13 @@ echo "Rstudio..."
 rm -r ~/.config/rstudio
 ln -s "$(pwd)"/rstudio ~/.config/rstudio
 
+# R profile
+echo "R profile/Renvironment..."
+rm ~/.Rprofile
+ln -s "$(pwd)"/Rprofile ~/.Rprofile
+rm ~/.Renviron 
+ln -s "$(pwd)"/Renviron ~/.Renviron
+
 # CTAGS
 echo "CTAGS..."
 rm ~/.ctags
@@ -51,7 +58,7 @@ echo "Applications..."
 for appfile in $(ls applications/*.desktop)
 do
     echo "$appfile"
-    rm -r ~/.local/share/applications/$appfile
+    rm -r ~/.local/share/$appfile
     ln -s "$(pwd)"/$appfile ~/.local/share/$appfile
 done
 
