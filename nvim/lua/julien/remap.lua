@@ -8,6 +8,7 @@ vim.keymap.set("n", "k", "gk")
 
 vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = "[F]ile [E]xplorer `:Ex`" })
 
+
 vim.keymap.set("i", "<Down>", "<C-o>gj")
 vim.keymap.set("i", "<Up>", "<C-o>gk")
 
@@ -15,12 +16,35 @@ vim.keymap.set("i", "<Up>", "<C-o>gk")
 vim.keymap.set("n", "c", "\"cc")
 vim.keymap.set("v", "c", "\"cc")
 
--- use leader p to paste over a word without losing the yank register
--- (it yank in the void register)
--- vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "[P]aste over without yanking" })
 
-vim.keymap.set("v", "p", "\"_dP", { desc = "[P]aste over without yanking" })
-vim.keymap.set("v", "<leader>p", "p", { desc = "[P]aste over without yanking" })
+function PasteWithoutYank()
+  -- The idea is to yank in the void register,
+  -- "_dP
+  -- the problem is that if the seleciton is until the end of the line
+  -- the cursor will be on the last character of the line and therfore
+  -- p should be used instead of P
+
+  local selection_end = vim.fn.getpos("'>")
+  local selection_end_line = selection_end[2]
+  local selection_end_col = selection_end[3] - 1
+  local line_content = vim.api.nvim_buf_get_lines(
+    vim.api.nvim_get_current_buf(),
+    selection_end_line - 1,
+    selection_end_line,
+    false)[1]
+  local line_width = vim.fn.strdisplaywidth(line_content)
+
+  if selection_end_col == line_width then
+    vim.api.nvim_feedkeys("\"_dp", 'n', true)
+  else
+    vim.api.nvim_feedkeys("\"_dP", 'n', true)
+  end
+end
+
+vim.keymap.set("v", "<leader>p", "p", { desc = "normal [P]aste over (yank text)" })
+-- vim.keymap.set("v", "p", "\"_dP", { desc = "[P]aste over without yanking" })
+vim.keymap.set("v", "p", [[<Cmd>lua PasteWithoutYank()<CR>]],
+  { desc = "[P]aste over without yanking" })
 
 -- move selected text
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines Up" })
