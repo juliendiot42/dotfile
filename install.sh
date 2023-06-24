@@ -2,17 +2,11 @@
 
 #ln -s TARGET DIR  # target must exist 
 
-
-
-
-
-
-
-
-
-
-
-
+# .profile
+echo ".profile..."
+rm ~/.profile
+echo "\tlink profile "
+ln -s "$(pwd)"/profile ~/.profile
 
 # ZSH
 echo "ZSH..."
