@@ -1,13 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+neofetch
+
 umask 007
 #setopt correct
 
 source /etc/profile
+source ~/.profile
 
-PATH=$PATH:$HOME/.local/bin
-PATH=$PATH:$HOME/anaconda3/bin/
+# I suggest to modify the PATH variable in the ~/.profile file 
+# so that it is consistent with other shell (eg. bash)
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -96,12 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -111,9 +108,26 @@ fi
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
+# # Some environment variable
+# export GEM_HOME=$HOME/.gems
+# export RUBYOPT=-rubygems
+
+
+
+
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias vim="nvim"
 alias aptup="sudo apt update && apt list --upgradable"
 alias aptupg="sudo apt upgrade"
 alias aptin="sudo apt install"
@@ -125,39 +139,16 @@ alias mv="mv -i"
 alias gitfuckit="git commit -a -m \"¯\\_(ツ)_/¯\""
 alias gitlog="git log --oneline"
 alias checkPorts="sudo lsof -i -P -n | grep LISTEN"
-# The following lines were added by compinstall
 
-zstyle ':completion:*' auto-description '%d'
-zstyle ':completion:*' completer _expand _complete _ignored
-zstyle ':completion:*' completions 1
-zstyle ':completion:*' format '%d'
-zstyle ':completion:*' glob 1
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' max-errors 2
-zstyle ':completion:*' menu select=5
-zstyle ':completion:*' original true
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' substitute 1
-zstyle :compinstall filename "$HOME/.zshrc"
+# anaconda3 overwrite pandoc so:
+# alias pandoc="/usr/bin/pandoc"
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+# workon/off functions
+setopt NO_HUP # avoid zsh to kill background process
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$("$HOME/anaconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+alias workon="sh ~/Documents/Work/GitRepos/dotfile/utils_scripts/workon.sh"
+alias workoff="sh ~/Documents/Work/GitRepos/dotfile/utils_scripts/workoff.sh"
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
