@@ -21,6 +21,7 @@ rm ~/.vim/vimrc
 rm -r ~/.config/nvim
 ln -s "$(pwd)"/nvim ~/.config/nvim
 
+
 # CTAGS
 echo "CTAGS..."
 rm ~/.ctags
@@ -32,3 +33,21 @@ echo "Terminator..."
 rm -r ~/.config/terminator 
 echo "\tlink terminator config "
 ln -s "$(pwd)"/terminator ~/.config/terminator 
+
+
+# utils scripts
+for scriptFile in $(ls utils_scripts)
+do
+    echo "$scriptFile"
+    chmod +x utils_scripts/$scriptFile
+done
+
+# applications
+echo "Applications..."
+for appfile in $(ls applications/*.desktop)
+do
+    echo "$appfile"
+    rm -r ~/.local/share/applications/$appfile
+    ln -s "$(pwd)"/$appfile ~/.local/share/$appfile
+done
+
