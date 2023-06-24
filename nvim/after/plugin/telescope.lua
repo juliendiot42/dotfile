@@ -8,4 +8,7 @@ if packer_plugins['telescope.nvim'] and packer_plugins['telescope.nvim'].loaded 
     vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "[F]ind [Diagnostics]" })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "[F]ind [H]elp" })
     vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = "[F]ind [K]ekmaps" })
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "[F]ind [B]uffers" })
+    vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = "[F]ind [C]ommands" })
+    vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = "[F]ind [M]arks" })
 end
