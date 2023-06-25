@@ -78,7 +78,7 @@ vim.keymap.set("n", "}", "10j")
 -- vim.keymap.set("n", "}", "}")
 
 -- insert <- with `Alt+-` (for R)
-vim.keymap.set("i", "<M-->", "<-") -- no need to go in "Ex" mode
+-- vim.keymap.set("i", "<M-->", " <-")
 
 -- other
 vim.keymap.set("n", "Q", "<nop>") -- no need to go in "Ex" mode

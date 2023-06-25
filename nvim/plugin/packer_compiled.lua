@@ -79,6 +79,14 @@ _G.packer_plugins = {
     path = "/home/julien/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["Nvim-R"] = {
+    cond = { "\27LJ\2\nL\0\0\2\0\3\0\0146\0\0\0009\0\1\0006\1\0\0009\1\1\0019\1\2\1\14\0\1\0X\2\1€+\1\1\0=\1\2\0006\0\0\0009\0\1\0009\0\2\0\19\0\0\0L\0\2\0\vvscode\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = true,
+    path = "/home/julien/.local/share/nvim/site/pack/packer/opt/Nvim-R",
+    url = "https://github.com/jalvesaq/Nvim-R"
+  },
   catppuccin = {
     cond = { "\27LJ\2\nL\0\0\2\0\3\0\0146\0\0\0009\0\1\0006\1\0\0009\1\1\0019\1\2\1\14\0\1\0X\2\1€+\1\1\0=\1\2\0006\0\0\0009\0\1\0009\0\2\0\19\0\0\0L\0\2\0\vvscode\6g\bvim\0" },
     config = { "\27LJ\2\n:\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\27colorscheme catppuccin\bcmd\bvim\0" },
@@ -98,6 +106,14 @@ _G.packer_plugins = {
     path = "/home/julien/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["context.vim"] = {
+    cond = { "\27LJ\2\nL\0\0\2\0\3\0\0146\0\0\0009\0\1\0006\1\0\0009\1\1\0019\1\2\1\14\0\1\0X\2\1€+\1\1\0=\1\2\0006\0\0\0009\0\1\0009\0\2\0\19\0\0\0L\0\2\0\vvscode\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = true,
+    path = "/home/julien/.local/share/nvim/site/pack/packer/opt/context.vim",
+    url = "https://github.com/wellle/context.vim"
+  },
   ["gitsigns.nvim"] = {
     cond = { "\27LJ\2\nL\0\0\2\0\3\0\0146\0\0\0009\0\1\0006\1\0\0009\1\1\0019\1\2\1\14\0\1\0X\2\1€+\1\1\0=\1\2\0006\0\0\0009\0\1\0009\0\2\0\19\0\0\0L\0\2\0\vvscode\6g\bvim\0" },
     loaded = false,
@@ -110,6 +126,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/julien/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["indent-blankline.nvim"] = {
+    cond = { "\27LJ\2\nL\0\0\2\0\3\0\0146\0\0\0009\0\1\0006\1\0\0009\1\1\0019\1\2\1\14\0\1\0X\2\1€+\1\1\0=\1\2\0006\0\0\0009\0\1\0009\0\2\0\19\0\0\0L\0\2\0\vvscode\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = true,
+    path = "/home/julien/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -236,21 +260,30 @@ time([[Config for which-key.nvim]], false)
 time([[Conditional loading of gitsigns.nvim]], true)
   require("packer.load")({"gitsigns.nvim"}, {}, _G.packer_plugins)
 time([[Conditional loading of gitsigns.nvim]], false)
+time([[Conditional loading of indent-blankline.nvim]], true)
+  require("packer.load")({"indent-blankline.nvim"}, {}, _G.packer_plugins)
+time([[Conditional loading of indent-blankline.nvim]], false)
+time([[Conditional loading of Nvim-R]], true)
+  require("packer.load")({"Nvim-R"}, {}, _G.packer_plugins)
+time([[Conditional loading of Nvim-R]], false)
+time([[Conditional loading of context.vim]], true)
+  require("packer.load")({"context.vim"}, {}, _G.packer_plugins)
+time([[Conditional loading of context.vim]], false)
 time([[Conditional loading of telescope.nvim]], true)
   require("packer.load")({"telescope.nvim"}, {}, _G.packer_plugins)
 time([[Conditional loading of telescope.nvim]], false)
 time([[Conditional loading of undotree]], true)
   require("packer.load")({"undotree"}, {}, _G.packer_plugins)
 time([[Conditional loading of undotree]], false)
-time([[Conditional loading of vim-fugitive]], true)
-  require("packer.load")({"vim-fugitive"}, {}, _G.packer_plugins)
-time([[Conditional loading of vim-fugitive]], false)
-time([[Conditional loading of catppuccin]], true)
-  require("packer.load")({"catppuccin"}, {}, _G.packer_plugins)
-time([[Conditional loading of catppuccin]], false)
 time([[Conditional loading of vim-be-good]], true)
   require("packer.load")({"vim-be-good"}, {}, _G.packer_plugins)
 time([[Conditional loading of vim-be-good]], false)
+time([[Conditional loading of catppuccin]], true)
+  require("packer.load")({"catppuccin"}, {}, _G.packer_plugins)
+time([[Conditional loading of catppuccin]], false)
+time([[Conditional loading of vim-fugitive]], true)
+  require("packer.load")({"vim-fugitive"}, {}, _G.packer_plugins)
+time([[Conditional loading of vim-fugitive]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

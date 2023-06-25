@@ -1,0 +1,12 @@
+-- if packer_plugins['Nvim-R'] and packer_plugins['Nvim-R'].loaded then
+--     vim.g.R_auto_start = 1 -- autostart R
+--     vim.g.R_filetypes = { 'r', 'rmd', 'rrst', 'rnoweb', 'quarto', 'rhelp' }
+--     vim.g.R_assign_map = '_'
+--     vim.g.R_assign = 2 -- do not map _ to <-
+--     vim.g.R_nvimpager = 'vertical'
+--     vim.g.R_rconsole_width = 80
+--     vim.g.R_min_editor_width = 1
+--     vim.g.R_objbr_place = 'console,below'
+-- else
+--     print("Nvim-R not found.")
+-- end

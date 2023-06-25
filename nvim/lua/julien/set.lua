@@ -18,10 +18,14 @@ vim.opt.undofile = true
 vim.opt.autoread = true     -- relaod file when changed from outsid
 vim.opt.autowriteall = true -- auto save on exit an other
 
+-- remove trailing spaces
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = { "*" },
+    command = [[%s/\s\+$//e]],
+})
+
 -- vim.opt.listchars = {tab = ">-"}
 vim.opt.list = true
--- set listchars=tab:>─,eol:¬,trail:·,nbsp:¤,space:·
--- set fillchars=vert:│
 
 -- search behavior
 vim.opt.hlsearch = false
@@ -32,7 +36,7 @@ vim.opt.smartcase = true
 
 -- editor
 vim.opt.termguicolors = true
-vim.opt.colorcolumn = "80" -- highlight the 80th column
+vim.opt.colorcolumn = "80,95" -- highlight the 80th column
 vim.opt.cursorline = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"

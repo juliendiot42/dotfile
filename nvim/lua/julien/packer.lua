@@ -45,12 +45,19 @@ return require('packer').startup(function(use)
         }
     })
 
+    -- Nice plugin to work with R
+    use({
+        "jalvesaq/Nvim-R",
+        cond = notInVScode,
+    })
+
     -- navigate between files
     use({
         'ThePrimeagen/harpoon',
         require = { { 'nvim-lua/plenary.nvim' } }
     })
-    -- Lua
+
+    -- show help on available commands
     use {
         "folke/which-key.nvim",
         config = function()
@@ -63,6 +70,7 @@ return require('packer').startup(function(use)
             }
         end
     }
+
     -- colorscheme (cf. `after/plugin/colors.lua`)
     use({
         "catppuccin/nvim",
@@ -90,6 +98,23 @@ return require('packer').startup(function(use)
     --         end
     -- })
 
+    -- get indent lines
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        cond = notInVScode
+    }
+
+
+    -- -- auto save file after edit
+    -- use({
+    --     "Pocco81/auto-save.nvim",
+    -- })
+
+    -- get the current context on top of the window
+    use {
+        'wellle/context.vim',
+        cond = notInVScode
+    }
 
     -- Status line (see `:help lualine.txt`)
     use {

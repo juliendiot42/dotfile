@@ -48,4 +48,6 @@ if packer_plugins['gitsigns.nvim'] and packer_plugins['gitsigns.nvim'].loaded th
             vim.keymap.set('n', '<leader>gb', gs.toggle_current_line_blame, { desc = "Toggle [G]it [B]lame" })
         end
     }
+else
+    print("gitsigns not found")
 end
