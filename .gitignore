@@ -7,4 +7,8 @@ rstudio/Crashpad
 rstudio/TransportSecurity
 rstudio/Network*Persistent*State
 rstudio/Dictionaries
+rstudio/SingletonCookie
+rstudio/SingletonLock
+rstudio/SingletonSocket
+rstudio/crash-handler.conf
 
