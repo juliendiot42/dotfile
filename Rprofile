@@ -17,12 +17,17 @@ options(Ncpus = max(as.numeric(system("nproc", intern = TRUE)) - 2, 1))
 
 if (interactive()) {
   # quit without asking to save workspace image
-  utils::assignInNamespace(
-    "q",
-    function(save = "no", ...) {
-      quit(save = save, ...)
-    },
-    "base")
+  tryCatch({
+    utils::assignInNamespace(
+      "q",
+      function(save = "no", ...) {
+        quit(save = save, ...)
+      },
+      "base")
+  }, error = function(err) {
+    message("Can't reassign q()\n")
+    return(1)
+  })
 
   .First <- function() {
     msg <- c()
