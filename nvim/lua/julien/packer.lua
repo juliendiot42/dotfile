@@ -171,4 +171,10 @@ return require('packer').startup(function(use)
         'ThePrimeagen/vim-be-good',
         cond = notInVScode
     })
+
+    -- user nvim in firefox
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end
+    }
 end)
