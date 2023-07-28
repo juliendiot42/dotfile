@@ -129,6 +129,10 @@ return require('packer').startup(function(use)
         { run = ':TSUpdate' },
         cond = notInVScode
     })
+    use({
+        'nvim-treesitter/playground',
+        cond = notInVScode
+    })
 
     -- keep the history tree (cf. `after/plugin/undotree.lua`)
     use({
@@ -176,5 +180,26 @@ return require('packer').startup(function(use)
     use {
         'glacambre/firenvim',
         run = function() vim.fn['firenvim#install'](0) end
+    }
+
+    use {
+        'cameron-wags/rainbow_csv.nvim',
+        config = function()
+            require 'rainbow_csv'.setup()
+        end,
+        -- optional lazy-loading below
+        module = {
+            'rainbow_csv',
+            'rainbow_csv.fns'
+        },
+        ft = {
+            'csv',
+            'tsv',
+            'csv_semicolon',
+            'csv_whitespace',
+            'csv_pipe',
+            'rfc_csv',
+            'rfc_semicolon'
+        }
     }
 end)

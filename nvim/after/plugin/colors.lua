@@ -33,6 +33,8 @@ function ColorMyPencils(color)
             color_overrides = {},
             custom_highlights = {},
             integrations = {
+                treesitter = true,
+                markdown = true,
                 cmp = true,
                 gitsigns = true,
                 nvimtree = true,

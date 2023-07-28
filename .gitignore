@@ -11,4 +11,4 @@ rstudio/SingletonCookie
 rstudio/SingletonLock
 rstudio/SingletonSocket
 rstudio/crash-handler.conf
-
+nvim/plugin/packer_compiled.lua

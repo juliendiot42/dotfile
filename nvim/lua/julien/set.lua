@@ -17,6 +17,12 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.autoread = true     -- relaod file when changed from outsid
 vim.opt.autowriteall = true -- auto save on exit an other
+vim.cmd [[
+  augroup AutoSaveOnFocusLost
+    autocmd!
+    autocmd FocusLost * silent! wa
+  augroup END
+]]
 
 -- remove trailing spaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {

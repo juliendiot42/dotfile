@@ -128,6 +128,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias vim="nvim"
+alias vimconf="nvim  -c \"cd ~/.config/nvim\" ~/.config/nvim/"
 alias aptup="sudo apt update && apt list --upgradable"
 alias aptupg="sudo apt upgrade"
 alias aptin="sudo apt install"

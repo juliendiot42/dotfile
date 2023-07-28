@@ -1,7 +1,9 @@
 if packer_plugins['nvim-treesitter'] and packer_plugins['nvim-treesitter'].loaded then
   require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "r", "python", "bash", "ruby", "cpp", "lua", "vim", "vimdoc", "query", "javascript",
+    ensure_installed = { "r", "python", "markdown", "markdown_inline", "bash", "ruby", "lua", "vim", "vimdoc", "cpp",
+      "query",
+      "javascript",
       "typescript" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
