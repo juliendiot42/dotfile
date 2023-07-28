@@ -1,11 +1,11 @@
 if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded then
   local lsp = require('lsp-zero').preset({})
-
   lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
   end)
 
-  require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+  -- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+  -- require('lspconfig').vale_ls.setup({})
 
   lsp.ensure_installed({
     'lua_ls',
@@ -55,6 +55,11 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
   end
 
   cmp.setup({
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end
+    },
     preselect = 'item',
     completion = {
       completeopt = 'menu,menuone,noinsert'
@@ -78,6 +83,11 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
       documentation = cmp.config.window.bordered(),
     }
   })
+
+
+  -- configure snippets
+  -- require("luasnip.loaders.from_snipmate").lazy_load({ path = { "~/.config/rstudio/snippets" } }) -- Load snippets from my-snippets folder
+  require("luasnip.loaders.from_snipmate").lazy_load({ path = { "./snippets" } }) -- Load snippets from my-snippets folder
 
   -- use LSP features only if available
   lsp.on_attach(function(client, bufnr)
