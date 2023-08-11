@@ -4,8 +4,6 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
     lsp.default_keymaps({ buffer = bufnr })
   end)
 
-  -- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-  -- require('lspconfig').vale_ls.setup({})
 
   lsp.ensure_installed({
     'lua_ls',
@@ -26,6 +24,36 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
       ['r_language_server'] = { 'R' },
     }
   })
+
+  -- config for lua_ls
+  local lspconfig = require('lspconfig')
+  lspconfig.lua_ls.setup({
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = { 'vim' },
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  })
+
+
+
+
+
 
   -- autocomplete config
   local luasnip = require 'luasnip'
@@ -55,6 +83,25 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
   end
 
   cmp.setup({
+    formatting = {
+      fields = { 'abbr', 'kind', 'menu' },
+      format = require('lspkind').cmp_format({
+        mode = 'symbol',       -- show only symbol annotations
+        maxwidth = 50,         -- prevent the popup from showing more than provided characters
+        ellipsis_char = '...', -- the truncated part when popup menu exceed maxwidth
+        before = function(entry, item)
+          local menu_icon = {
+            nvim_lsp = '',
+            luasnip = '',
+            path = '',
+            cmp_zotcite = 'z',
+            cmp_nvim_r = 'R'
+          }
+          item.menu = menu_icon[entry.source.name]
+          return item
+        end,
+      })
+    },
     snippet = {
       expand = function(args)
         require('luasnip').lsp_expand(args.body)
@@ -65,18 +112,19 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
       completeopt = 'menu,menuone,noinsert'
     },
     mapping = {
-      ['<CR>'] = cmp.mapping.confirm {
-        select = true
-      },
+      -- ['<CR>'] = cmp.mapping.confirm {
+      --   select = true
+      -- },
       ['<Tab>'] = mySuperTab(),
       ['<S-Tab>'] = myShiftSuperTab()
     },
     sources = {
+      { name = 'luasnip',   keyword_length = 2 },
       { name = 'path' },
-      { name = 'buffer',  keyword_length = 3 },
-      { name = 'nvim_lsp' },
-      { name = 'luasnip', keyword_length = 2 },
+      { name = 'cmp_nvim_r' },
+      { name = 'nvim_lsp',  keyword_length = 3 },
       { name = 'nvim_lua' },
+      -- { name = 'buffer',    keyword_length = 3 },
     },
     window = {
       completion = cmp.config.window.bordered(),

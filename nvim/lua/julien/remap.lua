@@ -3,11 +3,13 @@ vim.g.mapleader = " "
 
 
 -- for wrapped line
+vim.keymap.set("n", "<leader>wl", ":set wrap!<CR>", { desc = "Tollge [W]rap [L]ines" })
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
+-- navigation
 vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = "[F]ile [E]xplorer `:Ex`" })
-
+-- Also see ./after/plugin/telescope.lua
 
 vim.keymap.set("i", "<Down>", "<C-o>gj")
 vim.keymap.set("i", "<Up>", "<C-o>gk")
@@ -72,10 +74,8 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "{", "10k")
-vim.keymap.set("n", "}", "10j")
--- vim.keymap.set("n", "{", "{")
--- vim.keymap.set("n", "}", "}")
+-- vim.keymap.set("n", "{", "10k")
+-- vim.keymap.set("n", "}", "10j")
 
 -- insert <- with `Alt+-` (for R)
 -- vim.keymap.set("i", "<M-->", " <-")
