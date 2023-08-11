@@ -1,6 +1,6 @@
 #! /bin/sh
 
-#ln -s TARGET DIR  # target must exist 
+#ln -s TARGET DIR  # target must exist
 
 # .profile
 echo ".profile..."
@@ -21,6 +21,11 @@ rm ~/.vim/vimrc
 rm -r ~/.config/nvim
 ln -s "$(pwd)"/nvim ~/.config/nvim
 
+# qtile
+echo "qtile..."
+rm -r ~/.config/qtile
+ln -s "$(pwd)"/qtile ~/.config/qtile
+
 # R-studio
 echo "Rstudio..."
 rm -r ~/.config/rstudio
@@ -30,7 +35,7 @@ ln -s "$(pwd)"/rstudio ~/.config/rstudio
 echo "R profile/Renvironment..."
 rm ~/.Rprofile
 ln -s "$(pwd)"/Rprofile ~/.Rprofile
-rm ~/.Renviron 
+rm ~/.Renviron
 ln -s "$(pwd)"/Renviron ~/.Renviron
 
 # CTAGS
@@ -41,9 +46,9 @@ ln -s "$(pwd)"/ctags ~/.ctags
 
 # terminator
 echo "Terminator..."
-rm -r ~/.config/terminator 
+rm -r ~/.config/terminator
 echo "\tlink terminator config "
-ln -s "$(pwd)"/terminator ~/.config/terminator 
+ln -s "$(pwd)"/terminator ~/.config/terminator
 
 
 # utils scripts
