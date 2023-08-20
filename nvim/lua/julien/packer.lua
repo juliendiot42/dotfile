@@ -185,6 +185,15 @@ return require('packer').startup(function(use)
         run = function() vim.fn['firenvim#install'](0) end
     }
 
+
+    -- preview colors
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = function() require 'colorizer'.setup { '*' } end
+        -- use '*' to Highlight all files
+        -- use '!vim' to exlude some fieltype (eg. vim)
+    }
+    -- csv files
     use {
         'cameron-wags/rainbow_csv.nvim',
         config = function()

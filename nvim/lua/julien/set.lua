@@ -23,6 +23,7 @@ vim.cmd [[
     autocmd FocusLost * silent! wa
   augroup END
 ]]
+vim.api.nvim_create_user_command('W', 'w', { desc = "Same as `w`" })
 
 -- remove trailing spaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
@@ -52,7 +53,7 @@ vim.opt.showmode = true
 vim.opt.showcmd = true
 vim.opt.splitbelow = true -- split windows down
 vim.opt.splitright = true -- split windows right
-
+vim.opt.virtualedit = "onemore"
 -- copy
 vim.opt.clipboard = "unnamedplus" -- use clipboard by default
 vim.opt.selection = "exclusive"   -- `v$` do not include the line break

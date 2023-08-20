@@ -24,7 +24,7 @@ if packer_plugins['lualine.nvim'] and packer_plugins['lualine.nvim'].loaded then
         },
 
         sections = {
-            lualine_a = { 'mode' },
+            lualine_a = {{ 'mode' , fmt = function(str) return " "..str end}},
             lualine_b = { 'branch', 'diff', 'diagnostics' },
             lualine_c = {
                 {
