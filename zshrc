@@ -16,7 +16,7 @@ source ~/.profile
 export ZSH="$HOME/.oh-my-zsh"
 
 source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /home/julien/.zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source $HOME/.zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # export PATH="$HOME/anaconda3/bin:$PATH"  # commented out by conda initialize
 
 
@@ -146,6 +146,7 @@ alias checkPorts="sudo lsof -i -P -n | grep LISTEN"
 
 # workon/off functions
 setopt NO_HUP # avoid zsh to kill background process
+setopt NO_CHECK_JOBS # no messages about running job
 
 alias workon="sh ~/Documents/Work/GitRepos/dotfile/utils_scripts/workon.sh"
 alias workoff="sh ~/Documents/Work/GitRepos/dotfile/utils_scripts/workoff.sh"
