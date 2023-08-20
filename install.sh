@@ -5,13 +5,11 @@
 # .profile
 echo ".profile..."
 rm ~/.profile
-echo "\tlink profile "
 ln -s "$(pwd)"/profile ~/.profile
 
 # ZSH
 echo "ZSH..."
 rm ~/.zshrc
-echo "\tlink zshrc "
 ln -s "$(pwd)"/zshrc ~/.zshrc
 
 # neo vim
@@ -21,10 +19,40 @@ rm ~/.vim/vimrc
 rm -r ~/.config/nvim
 ln -s "$(pwd)"/nvim ~/.config/nvim
 
+# screenLayout
+echo "screenlayout..."
+rm -r ~/.screenlayout
+ln -s "$(pwd)"/screenlayout ~/.screenlayout
+
+# alacritty
+echo "alacritty..."
+rm -r ~/.config/alacritty
+ln -s "$(pwd)"/alacritty ~/.config/alacritty
+
+# conky
+echo "conky..."
+rm -r ~/.config/conky
+ln -s "$(pwd)"/conky ~/.config/conky
+
+# picom
+echo "picom..."
+rm -r ~/.config/picom
+ln -s "$(pwd)"/picom ~/.config/picom
+
+# dunst
+echo "dunst..."
+rm -r ~/.config/dunst
+ln -s "$(pwd)"/dunst ~/.config/dunst
+
 # qtile
 echo "qtile..."
 rm -r ~/.config/qtile
 ln -s "$(pwd)"/qtile ~/.config/qtile
+
+# easystroke (to get mouse button maped to Ctrl key)
+echo "easystroke..."
+rm -r ~/.easystroke
+ln -s "$(pwd)"/easystroke ~/.easystroke
 
 # R-studio
 echo "Rstudio..."
@@ -41,13 +69,11 @@ ln -s "$(pwd)"/Renviron ~/.Renviron
 # CTAGS
 echo "CTAGS..."
 rm ~/.ctags
-echo "\tlink ctags"
 ln -s "$(pwd)"/ctags ~/.ctags
 
 # terminator
 echo "Terminator..."
 rm -r ~/.config/terminator
-echo "\tlink terminator config "
 ln -s "$(pwd)"/terminator ~/.config/terminator
 
 

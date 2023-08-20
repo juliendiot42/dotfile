@@ -1,0 +1,286 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Import additional configuration files
+#
+# Imports are loaded in order, skipping all missing files, with the importing
+# file being loaded last. If a field is already present in a previous import, it
+# will be replaced.
+#
+# All imports must either be absolute paths starting with `/`, or paths relative
+# to the user's home directory starting with `~/`.
+#import:
+#  - /path/to/alacritty.yml
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+env:
+  TERM: alacritty
+
+window:
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 5
+    y: 5
+
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: true
+  decorations: full
+
+  # Background opacity
+  # The value `0.0` is completely transparent and `1.0` is opaque.
+  opacity: 0.9
+
+  # Window title
+  title: Alacritty
+
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+
+  # Decorations theme variant
+  #
+  # Override the variant of the System theme/GTK theme/Wayland client side
+  # decorations. Commonly supported values are `Dark`, `Light`, and `None` for
+  # auto pick-up. Set this to `None` to use the default theme variant.
+  decorations_theme_variant: Dark
+
+
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Scrolling distance multiplier.
+  multiplier: 3
+
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    family: "FiraCode Nerd Font"
+    style: Regular
+
+  bold:
+    #family: monospace
+    style: Bold
+
+  italic:
+    #family: monospace
+    style: Italic
+
+  bold_italic:
+    #family: monospace
+    style: Bold Italic
+
+  # Point size
+  size: 13.0
+
+  # Offset is the extra space around each character. `offset.y` can be thought
+  # of as modifying the line spacing, and `offset.x` as modifying the letter
+  # spacing.
+  offset:
+    x: 0
+    y: 0
+
+# If `true`, bold text is drawn using the bright color variants.
+# draw_bold_text_with_bright_colors: true
+
+# Colors (Tomorrow Night)
+colors:
+  # Default colors
+  primary:
+   background: '#383c3e'
+   foreground: '#fcfcfc'
+
+  # Cursor colors
+  # Allowed values are CellForeground/CellBackground, or hexadecimal
+  #cursor:
+  #  text: CellBackground
+  #  cursor: CellForeground
+
+  # Search colors
+  #
+  # Colors used for the search bar and match highlighting.
+  #search:
+    # Allowed values are CellForeground/CellBackground, which reference the
+    # affected cell, or hexadecimal colors like #ff00ff.
+    #matches:
+    #  foreground: '#000000'
+    #  background: '#ffffff'
+    #focused_match:
+    #  foreground: '#ffffff'
+    #  background: '#000000'
+
+  # Keyboard hints
+  #hints:
+    # First character in the hint label
+    #
+    # Allowed values are CellForeground/CellBackground, which reference the
+    # affected cell, or hexadecimal colors like #ff00ff.
+    #start:
+    #  foreground: '#1d1f21'
+    #  background: '#e9ff5e'
+
+    # All characters after the first one in the hint label
+    #
+    # Allowed values are CellForeground/CellBackground, which reference the
+    # affected cell, or hexadecimal colors like #ff00ff.
+    #end:
+    #  foreground: '#e9ff5e'
+    #  background: '#1d1f21'
+
+  # Line indicator
+  #
+  # Color used for the indicator displaying the position in history during
+  # search and vi mode.
+  #
+  # By default, these will use the opposing primary color.
+  #line_indicator:
+  #  foreground: None
+  #  background: None
+
+  # Footer bar
+  #
+  # Color used for the footer bar on the bottom, used by search regex input,
+  # hyperlink URI preview, etc.
+  #
+  #footer_bar:
+  #  background: '#c5c8c6'
+  #  foreground: '#1d1f21'
+
+  # Selection colors
+  #
+  # Colors which should be used to draw the selection area.
+  #
+  # Allowed values are CellForeground/CellBackground, which reference the
+  # affected cell, or hexadecimal colors like #ff00ff.
+  #selection:
+  #  text: CellBackground
+  #  background: CellForeground
+
+  # Normal colors
+  normal:
+    black:   '#1d1f21'
+    red:     '#AA202C'
+    green:   '#309F4F'
+    yellow:  '#CCB600'
+    blue:    '#007CB0'
+    magenta: '#D15579'
+    cyan:    '#8abeb7'
+    white:   '#c5c8c6'
+
+  # Bright colors
+  bright:
+    black:   '#666666'
+    red:     '#CC0015'
+    green:   '#1A8C14'
+    yellow:  '#F0BD49'
+    blue:    '#18459C'
+    magenta: '#B000B3'
+    cyan:    '#70c0b1'
+    white:   '#eaeaea'
+
+  # Dim colors
+  #
+  # If the dim colors are not set, they will be calculated automatically based
+  # on the `normal` colors.
+  dim:
+    black:   '#131415'
+    red:     '#A23C4A'
+    green:   '#777c44'
+    yellow:  '#9e824c'
+    blue:    '#556a7d'
+    magenta: '#75617b'
+    cyan:    '#5b7d78'
+    white:   '#828482'
+
+  # Indexed Colors
+  #
+  # The indexed colors include all colors from 16 to 256.
+  # When these are not set, they're filled with sensible defaults.
+  #
+  # Example:
+  #   `- { index: 16, color: '#ff00ff' }`
+  #
+  #indexed_colors: []
+
+  # Transparent cell backgrounds
+  #
+  # Whether or not `window.opacity` applies to all cell backgrounds or only to
+  # the default background. When set to `true` all cells will be transparent
+  # regardless of their background color.
+  # transparent_background_colors: true
+
+cursor:
+  # Cursor style
+  style:
+    shape: Beam # ▇ Block; _ Underline; | Beam
+    blinking: On # On; Off; Always; Never;
+  blink_interval: 750 # in milliseconds.
+  blink_timeout: 0 # '0' will disable timeout for blinking.
+
+live_config_reload: true
+
+
+mouse:
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  #double_click: { threshold: 300 }
+  #triple_click: { threshold: 300 }
+  hide_when_typing: true
+
+# Hints
+#
+# Terminal hints can be used to find text or hyperlink in the visible part of
+# the terminal and pipe it to other applications.
+hints:
+  # Keys used for the hint labels.
+  alphabet: "jfkdls;ahgurieowpq"
+
+mouse_bindings:
+  - { mouse: Right,                 action: ExpandSelection }
+  - { mouse: Right,  mods: Control, action: ExpandSelection }
+  # - { mouse: Middle, mode: ~Vi,     action: PasteSelection  }
+selection:
+  save_to_clipboard: true
+
+key_bindings:
+  - { key: Paste,                                       action: Paste          }
+  - { key: Copy,                                        action: Copy           }
+  - { key: L,         mods: Control,                    action: ClearLogNotice }
+  - { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
+  - { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp   }
+  - { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
+  - { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop    }
+  - { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
+
+  # Search Mode
+  - { key: F,              mods: Control|Shift, mode: ~Search,    action: SearchForward    }
+  - { key: B,              mods: Control|Shift, mode: ~Search,    action: SearchBackward   }
+  - { key: Return,                mode: Search|Vi,  action: SearchConfirm         }
+  - { key: Escape,                mode: Search,     action: SearchCancel          }
+  - { key: C,      mods: Control, mode: Search,     action: SearchCancel          }
+  - { key: U,      mods: Control, mode: Search,     action: SearchClear           }
+  - { key: W,      mods: Control, mode: Search,     action: SearchDeleteWord      }
+  - { key: P,      mods: Control, mode: Search,     action: SearchHistoryPrevious }
+  - { key: N,      mods: Control, mode: Search,     action: SearchHistoryNext     }
+  - { key: Up,                    mode: Search,     action: SearchHistoryPrevious }
+  - { key: Down,                  mode: Search,     action: SearchHistoryNext     }
+
+  # (Windows, Linux, and BSD only)
+  - { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
+  - { key: C,              mods: Control|Shift,                   action: Copy             }
+  - { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
+  - { key: Insert,         mods: Shift,                           action: PasteSelection   }
+  - { key: Key0,           mods: Control,                         action: ResetFontSize    }
+  - { key: Equals,         mods: Control,                         action: IncreaseFontSize }
+  - { key: Plus,           mods: Control,                         action: IncreaseFontSize }
+  - { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
+  - { key: Minus,          mods: Control,                         action: DecreaseFontSize }
+  - { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
+
