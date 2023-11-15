@@ -10,6 +10,15 @@ vim.opt.shiftwidth = 4     -- 4 space when indenting with `>`
 vim.opt.expandtab = true   -- insert space rather than tab
 vim.opt.breakindent = true -- indent break lines
 
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    pattern = { "Makefile" },
+    callback = function()
+        vim.opt_local.expandtab = false
+    end
+})
+
+
+
 -- save
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -28,7 +37,13 @@ vim.api.nvim_create_user_command('W', 'w', { desc = "Same as `w`" })
 -- remove trailing spaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
-    command = [[%s/\s\+$//e]],
+    callback = function()
+        if vim.bo.filetype == "markdown" then
+            vim.cmd [[%s/\(\s\)\{3,\}$/  /e]]
+            return
+        end
+        vim.cmd [[%s/\s\+$//e]]
+    end
 })
 
 -- vim.opt.listchars = {tab = ">-"}
