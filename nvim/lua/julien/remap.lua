@@ -13,6 +13,7 @@ vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = "[F]ile [E]xplorer `:Ex`"
 
 vim.keymap.set("i", "<Down>", "<C-o>gj")
 vim.keymap.set("i", "<Up>", "<C-o>gk")
+vim.keymap.set("n", "gd", "<C-]>")
 
 -- don't yank with 'c' (yank in the 'c' register)
 vim.keymap.set("n", "c", "\"cc")

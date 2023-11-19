@@ -1,20 +1,32 @@
-function ColorMyPencils(color)
+function ColorMyPencils_rosePine(color)
     if packer_plugins['rose-pine'] and packer_plugins['rose-pine'].loaded then
-        print("rose")
-        color = "rose-pine"
-    elseif packer_plugins['catppuccin'] and packer_plugins['catppuccin'].loaded then
+        -- print("rose")
+        -- color = "rose-pine"
+        require('rose-pine').setup({
+            disable_background = true
+        })
+        color = color or "rose-pine"
+        vim.cmd.colorscheme(color)
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    end
+end
+
+function ColorMyPencils_catppuccin(color)
+    if packer_plugins['catppuccin'] and packer_plugins['catppuccin'].loaded then
         color = "catppuccin"
 
         require("catppuccin").setup({
-            flavour = "mocha", -- latte, frappe, macchiato, mocha
-            transparent_background = false,
+            flavour = "frappe", -- latte, frappe, macchiato, mocha
+            -- transparent_background = false,
             -- transparent_background = true,
             show_end_of_buffer = false, -- show the '~' characters after the end of buffers
             term_colors = true,
             dim_inactive = {
                 enabled = true,
                 shade = "dark",
-                -- percentage = 0.3,
+                percentage = 0.3,
+                -- transparent_background = true,
             },
             styles = {
                 comments = { "italic" },
@@ -52,4 +64,5 @@ function ColorMyPencils(color)
     -- vim.opt.winblend = 15
 end
 
-ColorMyPencils()
+-- ColorMyPencils_rosePine()
+ColorMyPencils_catppuccin()

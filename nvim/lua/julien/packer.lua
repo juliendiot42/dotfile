@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
     -- for finding projects files (cf. `after/plugin/telescope.lua`)
     use({
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.1',
+        tag = '0.1.4',
         -- or                            , branch = '0.1.x',
         cond = notInVScode,
         requires = { { 'nvim-lua/plenary.nvim' } }
@@ -85,14 +85,14 @@ return require('packer').startup(function(use)
         end
     })
 
-    -- use ({
-    --     'rose-pine/neovim',
-    --     as = "rose-pine",
-    --     cond = notInVScode,
-    --     config = function()
-    --         vim.cmd('colorscheme rose-pine')
-    --     end
-    -- })
+    use({
+        'rose-pine/neovim',
+        as = "rose-pine",
+        cond = notInVScode,
+        config = function()
+            vim.cmd('colorscheme rose-pine')
+        end
+    })
 
     -- use ({
     --         'navarasu/onedark.nvim',
@@ -129,7 +129,7 @@ return require('packer').startup(function(use)
     -- (cf. `after/plugin/treesitter.lua`)
     use({
         'nvim-treesitter/nvim-treesitter',
-        { run = ':TSUpdate' },
+        run = ':TSUpdate',
         cond = notInVScode
     })
     use({

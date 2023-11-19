@@ -8,6 +8,7 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
   lsp.ensure_installed({
     'lua_ls',
     'r_language_server',
+    -- 'pyright',
   })
 
   lsp.set_sign_icons({
@@ -22,6 +23,7 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
     servers = {
       ['lua_ls'] = { 'lua' },
       ['r_language_server'] = { 'R' },
+      -- ['pyright'] = { 'py' },
     }
   })
 
@@ -43,7 +45,7 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
           library = {
             vim.api.nvim_get_runtime_file("", true),
             [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-        },
+          },
         },
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = {
@@ -53,7 +55,16 @@ if packer_plugins['lsp-zero.nvim'] and packer_plugins['lsp-zero.nvim'].loaded th
     },
   })
 
-
+  lspconfig.r_language_server.setup({
+    settings = {
+      R = {
+      },
+    },
+  })
+  -- -- config for pyright
+  -- lspconfig.pyright.setup({
+  --   filetypes = { "python" }
+  -- })
 
 
 

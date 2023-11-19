@@ -1,139 +1,540 @@
-snippet #!
-	#!/usr/bin/env Rscript
-
-# includes
 snippet lib
-	library(${0:package})
-snippet req
-	require(${0:package})
-snippet source
-	source('${0:file}')
+	library(${0})
 
-# conditionals
+snippet req
+	require(${0})
+
+snippet src
+	source("${1:file.R}")
+
+snippet ret
+	return(${1:code})
+
+snippet mat
+	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
+
+snippet sg
+	setGeneric("${1:generic}", function(${2:x, ...}) {
+		standardGeneric("${1:generic}")
+	})
+
+snippet sm
+	setMethod("${1:generic}", ${2:class}, function(${2:x, ...}) {
+		${0}
+	})
+
+snippet sc
+	setClass("${1:Class}", slots = c(${2:name = "type"}))
+
 snippet if
-	if ($1) {
+	if (${1:condition}) {
 		${0}
 	}
+
 snippet el
 	else {
 		${0}
 	}
+
 snippet ei
-	else if ($1) {
+	else if (${1:condition}) {
 		${0}
 	}
 
-# loops
-snippet wh
-	while(${1:true}) {
-		${0}
-	}
-snippet wht
-	while(true) {
-		${0}
-	}
-snippet for
-	for (${1:item} in ${2:list}) {
-		${3}
-	}
-snippet foreach
-	foreach (${1:item} = ${2:list}) {
-		${3}
-	}
-
-# functions
 snippet fun
-	${1:name} <- function (${2:variables}) {
+	${1:name} <- function(${2:variables}) {
 		${0}
 	}
-snippet ret
-	return(${0})
 
-# dataframes, lists, etc
-snippet df
-	${1:name}[${2:rows}, ${0:cols}]
-snippet c
-	c(${0:items})
-snippet li
-	list(${0:items})
-snippet mat
-	matrix(${1:data}, nrow = ${2:rows}, ncol = ${0:cols})
+snippet for
+	for (${1:variable} in ${2:vector}) {
+		${0}
+	}
 
-# apply functions
+snippet while
+	while (${1:condition}) {
+		${0}
+	}
+
+snippet switch
+	switch (${1:object},
+		${2:case} = ${3:action}
+	)
+
 snippet apply
-	apply(${1:array}, ${2:margin}, ${0:function})
+	apply(${1:array}, ${2:margin}, ${3:...})
+
 snippet lapply
-	lapply(${1:list}, ${0:function})
+	lapply(${1:list}, ${2:function})
+
 snippet sapply
-	lapply(${1:list}, ${0:function})
-snippet vapply
-	vapply(${1:list}, ${2:function}, ${0:type})
+	sapply(${1:list}, ${2:function})
+
 snippet mapply
-	mapply(${1:function}, ${0:...})
+	mapply(${1:function}, ${2:...})
+
 snippet tapply
-	tapply(${1:vector}, ${2:index}, ${0:function})
+	tapply(${1:vector}, ${2:index}, ${3:function})
+
+snippet vapply
+	vapply(${1:list}, ${2:function}, FUN.VALUE = ${3:type}, ${4:...})
+
 snippet rapply
-	rapply(${1:list}, ${0:function})
+	rapply(${1:list}, ${2:function})
 
-# plyr functions
-snippet dd
-	ddply(${1:frame}, ${2:variables}, ${0:function})
-snippet dl
-	dlply(${1:frame}, ${2:variables}, ${0:function})
-snippet da
-	daply(${1:frame}, ${2:variables}, ${0:function})
-snippet d_
-	d_ply(${1:frame}, ${2:variables}, ${0:function})
 
-snippet ad
-	adply(${1:array}, ${2:margin}, ${0:function})
-snippet al
-	alply(${1:array}, ${2:margin}, ${0:function})
-snippet aa
-	aaply(${1:array}, ${2:margin}, ${0:function})
-snippet a_
-	a_ply(${1:array}, ${2:margin}, ${0:function})
+snippet shinyapp
+	library(shiny)
 
-snippet ld
-	ldply(${1:list}, ${0:function})
-snippet ll
-	llply(${1:list}, ${0:function})
-snippet la
-	laply(${1:list}, ${0:function})
-snippet l_
-	l_ply(${1:list}, ${0:function})
+	ui <- fluidPage(
+		${0}
+	)
 
-snippet	md
-	mdply(${1:matrix}, ${0:function})
-snippet	ml
-	mlply(${1:matrix}, ${0:function})
-snippet	ma
-	maply(${1:matrix}, ${0:function})
-snippet	m_
-	m_ply(${1:matrix}, ${0:function})
+	server <- function(input, output, session) {
 
-# plot functions
-snippet pl
-	plot(${1:x}, ${0:y})
-snippet ggp
-	ggplot(${1:data}, aes(${0:aesthetics}))
-snippet img
-	${1:(jpeg,bmp,png,tiff)}(filename = '${2:filename}', width = ${3}, height = ${4}, unit = '${5}')
-	${0:plot}
-	dev.off()
+	}
 
-# statistical test functions
-snippet fis
-	fisher.test(${1:x}, ${0:y})
-snippet chi
-	chisq.test(${1:x}, ${0:y})
-snippet tt
-	t.test(${1:x}, ${0:y})
-snippet wil
-	wilcox.test(${1:x}, ${0:y})
-snippet cor
-	cor.test(${1:x}, ${0:y})
-snippet fte
-	var.test(${1:x}, ${0:y})
-snippet kvt
-	kv.test(${1:x}, ${0:y})
+	shinyApp(ui, server)
+
+snippet shinymod
+	${1:name}_UI <- function(id) {
+		ns <- NS(id)
+		tagList(
+		${0}
+		)
+	}
+
+	${1:name} <- function(input, output, session) {
+
+	}
+
+
+# My personal snippets
+
+snippet charSeq
+
+	sprintf(paste0(${1:prefix},
+								"%0", floor(log10(${2:to})) + 1, "i",
+								${3:suffix}),
+					seq)
+	}
+
+snippet source.folder
+	sapply(FUN = source,
+				 X = list.files("src",
+												pattern = ".R$",
+												full.names = T))
+
+snippet start
+	# Author: Julien Diot juliendiot@ut-biomet.org
+	# ${1:Year} The University of Tokyo
+	#
+	# Description:
+	# ${2:Description}
+
+	#### PACKAGES ####
+	library(plotly)
+
+	#### OPTIONS ####
+	options(stringsAsFactors = FALSE)
+
+
+	#### CODE ####
+
+snippet plot
+	plot_ly(type = "scatter",
+					mode = "lines+markers",
+					data = ${1:dta},
+					x = ~${2:x},
+					y = ~${3:y},
+					# color = ~ ,
+					hoverinfo = "text",
+					text = apply(${1:dta}, 1, function(l) {
+						paste(names(l), ":", l, collapse = "\n")
+					})
+	)
+
+snippet hist
+	plot_ly(x = ${1:dta},
+					type = "histogram",
+					histnorm = "",# "" | "percent" | "probability"
+					name = "${1:dta}",
+					# nbinsx = 100, # no more than nbinsx
+					hovertemplate = "x: (%{x})\ny: %{y}",
+					marker = list(color = "green",
+												line = list(color = "black",
+																		width = 1))
+					) %>%
+		layout(
+			title = "${2:x}",
+			xaxis = list(title = "${2:x}"),
+			yaxis = list(title = "Count", # "percent" | "probability"
+										zeroline = TRUE)
+	)
+
+snippet boxPlot
+	plot_ly(type = "box",
+			data = ${1:dta},
+			y = ~${2:y},
+			# x = ~${3:x},
+			color = ~${3:x},
+			boxpoints = "all",
+			jitter = 0.3,
+			pointpos = 0,
+			hoverinfo = "text",
+			text = apply(${1:dta}, 1, function(l) {
+			  paste(names(l), ":", l, collapse = "\n")
+			})
+	)
+
+snippet micro
+	microbenchmark::microbenchmark(
+			old = {},
+			new = {}
+	)
+
+snippet myColor
+	myColors <- list(
+		red = "#CC0015",
+		green = "#27CC1D",
+		blue = "#003ECC",
+		yellow = "#CCB600",
+		orange = "#CC6300",
+		purple = "#CA01CC",
+
+		red_ = c("#CC0015", "#B30012", "#8C000E", "#6B000B", "#420007"),
+		green_ = c("#27CC1D", "#21B319", "#1A8C14", "#146B0F", "#0C4209"),
+		blue_ = c("#003ECC", "#0036B3", "#002A8C", "#00206B", "#001442"),
+		yellow_ = c("#CCB600", "#B3A100", "#8C7E00", "#6B6000", "#423C00"),
+		orange_ = c("#CC6300", "#B35600", "#8C4400", "#6B3400", "#422000"),
+		purple_ = c("#CA01CC", "#B000B3", "#8A008C", "#69006B", "#410042"),
+
+		pal1 = c("#CC0015", "#27CC1D", "#003ECC", "#CCB600", "#CC6300", "#CA01CC"),
+		batlow = c("#001959", "#184E60", "#577646", "#B28C32", "#FCA68C", "#F9CCF9"),
+		mononoke = c("#AA202C", "#453F2C", "#1E1234", "#F2F3E3", "#DCB995", "#309F4F"),
+		chiiro = c("#13121A", "#A23C4A", "#E76160", "#493630", "#E7B68D", "#E2E6C3"),
+		ponyo = c("#007CB0", "#00547F", "#81B9D8", "#DD7768", "#E95867", "#F7CCAC"),
+		majo = c("#18459C", "#FBF3DB", "#D9DE77", "#303461", "#FBAF74", "#EC414D"),
+		hauru = c("#0086C6", "#566586", "#813C4E", "#BCBC26", "#EDC097", "#F0BD49"),
+		totoro = c("#47678A", "#646A69", "#D1CFA8", "#D15579", "#DB8727", "#E4E476"),
+		amelie = c("#FDC24D", "#C52B24", "#EDE4DA", "#032430", "#009C4E", "#013821")
+		# see also pkg "scico"
+		# to check palette:
+		# library(scales)
+		# show_col(c("#CC0015", "#27CC1D", "#003ECC", "#CCB600", "#CC6300", "#CA01CC"))
+	)
+
+snippet testAPI
+	# Test ${1:METHODE} /${2:path} ----
+	test_that("${1:METHODE} /${2:path}", {
+
+		# creat path and request
+		path <- paste0(host,"/${2:path}")
+		query <- list(
+			${3:key} = ${4:value}
+			)
+
+
+		# send request
+		resp <- ${1:METHODE}(path,
+								query = query)
+
+		# test status
+		expect_equal(resp\$status_code, 200)
+
+		# test response content
+		respContent <- content(resp)
+		expect_equal(respContent\$KEY, VALUE)
+	})
+
+snippet verbalExpr
+	library(RVerbalExpressions)
+	# construct an expression
+	# https://rverbalexpressions.netlify.app/reference/index.html
+	x <- rx_start_of_line() %>%
+		rx_find('http') %>%
+		rx_maybe('s') %>%
+		rx_find('://') %>%
+		rx_maybe('www.') %>%
+		rx_anything_but(' ') %>%
+		rx_end_of_line()
+	# print the expression
+	x
+
+snippet R6
+	#' R6 class representing a ${1:object}
+	#'
+	#' @description
+	#' Description of ${1:object}
+	#'
+	#'
+	#' @export
+	#' @import R6
+	${1:object} <- R6::R6Class(
+		"${1:object}",
+		lock_objects = FALSE,
+		public = list(
+			# Public Fields ####
+			#' @field ${2:field1} [] ${2:field1} description
+			${2:field1} = NULL,
+			#' @field ${3:field2} [] ${3:field2} description
+			${3:field2} = NULL,
+
+			# Public Methods ####
+			#' @description Create a new ${1:object} object.
+			#' @param ${2:field1} [] ${2:field1} description
+			#' @param ${3:field2} [] ${3:field2} description
+			#' @return A new `${1:object}` object.
+			#' @examples
+			#' # create specie:
+			#' my${1:object} <- ${1:object}\$new(${2:field1} = NULL,
+			#'															${3:field2} = NULL)
+			initialize = function(${2:field1} = NULL,
+														${3:field2} = NULL){
+				self\$ ${2:field1} <- ${2:field1}
+				self\$ ${3:field2} <- ${3:field2}
+				private\$ ${6:privateField} <- NULL
+			},
+			#' @description Description of ${4:method1}
+			#' @param x [] Description of x
+			#' @examples
+			#' my${1:object} <- ${1:object}$new(${2:field1} = NULL,
+			#'															${3:field2} = NULL)
+			#' my${1:object}\$ ${4:method1}(x)
+			${4:method1} = function(x){
+				x
+			},
+			#' @description
+			#' Display informations about the object
+			print = function() {
+				cat(paste0("This is a ${1:object}"))
+			}
+		),
+		active = list(
+			# Active Fields ####
+			#' @field ${5:activeField1} [] description of ${5:activeField1}
+			${5:activeField1} = function(){
+				x
+			}
+		),
+		private = list(
+			# Private Fields ####
+			#' @field ${6:privateField} [] ${6:privateField} description
+			${6:privateField} = NULL,
+
+			# Private Methods ####
+			# @description description of ${7:privateMethod}
+			# @param x [] description of x
+			# @return NULL
+			${7:privateMethod} = function(x) {
+				x
+			}
+		)
+	)
+
+
+snippet sendSlack
+	#' Send message to slack
+	#'
+	#' @param body body of the message
+	#' @param channel destination channel of the message
+	#' @param file attached file
+	#'
+	sendSlack <- function(body,
+	                      channel = NULL,
+	                      file = NULL) {
+
+	  tryCatch({
+
+	    # setup slack connexion (need a "~/.slackr" file)
+	    slackr::slackr_setup()
+
+	    if (is.null(channel)) {
+	      channel <- Sys.getenv("SLACK_CHANNEL")
+	    }
+
+	    slackr::slackr_msg(body, channel = channel)
+
+	    if (!is.null(file)) {
+	      slackr::slackr_upload(filename = file,
+	                            channels = channel)
+	    }
+	    return(0)
+
+	  }, error = function(err) {
+	    # Error part, evaluated in case of error:
+	    message("Error detected. Here's the original error message:")
+	    message(err)
+	    # Choose a return value in case of error
+	    return(1)
+
+	  }, warning = function(warn) {
+	    # Warning part, evaluated in case of warning:
+	    message("Warning detected. Here's the original warning message:")
+	    message(warn)
+	    # Choose a return value in case of warning
+	    return(2)
+
+	  })
+	}
+
+
+snippet sendMail
+	#' Send an email using the linux command "mail" and postfix
+	#'
+	#'
+	#' @param to destination
+	#' @param subject
+	#' @param body
+	#' @param from sender info
+	#' @param file optional attached files
+	#'
+	#' @return NULL
+	#' @export
+	#'
+	#' @examples
+	sendMail <- function(to,
+							 subject,
+											 body,
+											 from = paste0(Sys.info()["user"], "-R@", Sys.info()["nodename"]),
+											 file = NULL) {
+
+			# check if system can send mails
+			x <- system("hash mail", intern = TRUE)
+			if ( ! is.null(attributes(x))) {
+					stop("Command 'mail' not found. Please install 'postfix' and 'mailutils'.")
+			}
+
+			# attached files
+			if (! is.null(file)) {
+					stopifnot("file not found" = all(file.exists(file)))
+					if (sum(file.size(file)) > 10^7 ) {
+							warning("Attached files bigger than 10 Mo ! May not work...")
+					}
+					fileCmd <- paste0(" --content-filename=\"", basename(file),"\" --attach=\"", file, "\"", collapse = " ")
+			} else {
+					fileCmd <- ""
+			}
+
+			command <- paste0("echo \"", body, "\" | mail ",
+												"-s \"", subject, "\" ",
+												"-aFrom:", from,
+												" ", paste(to, collapse = " "),
+												fileCmd)
+			cat(command)
+			system(command)
+	}
+	sendMail(to, subject, body, file = file)
+
+snippet funViz
+	plotDta <- data.frame(x = seq(${1:from}, ${2:to}, length.out = 200)) %>%
+	dplyr::mutate(y1 = dnorm(x, 0, 1), y2 = dnorm(x, 1, 0.5))
+	plot_ly(
+		type = "scatter",
+		mode = "lines",
+		data = plotDta,
+		x = ~ x,
+		y = ~ y1,
+		name = "y1"
+	) %>%
+	add_lines(y = ~ y2, name = "y2", ) %>%
+	layout(hovermode = 'compare')
+
+
+snippet emptyList
+	vector(mode = "list", length = ${1:length})
+
+snippet regmatch
+	regmatches(${1:x}, regexpr("${2:pattern}", ${1:x}))
+
+
+snippet tryCatch
+	tryCatch({
+		# This is the 'try' part
+		# write here the code to try
+		${1:expression}
+
+		# No need to state the return value via `return()` as code
+		# in the "try" part is not wrapped insided a function (unlike that
+		# for the condition handlers for warnings and error below)
+
+	}, error = function(err) {
+		# Error part, evaluated in case of error:
+		message("Error detected. Here's the original error message:")
+		message(err)
+		# Choose a return value in case of error
+		return(1)
+
+	}, warning = function(warn) {
+		# Warning part, evaluated in case of warning:
+		message("Warning detected. Here's the original warning message:")
+		message(warn)
+		# Choose a return value in case of warning
+		return(2)
+
+	}, finally = {
+		# NOTE:
+		# Here goes everything that should be executed at the end,
+		# regardless of success or error.
+		message("\nSome other message at the end")
+
+	})
+
+
+snippet suppressThisWarning
+	# this is based on `base::suppressWarnings`
+	withCallingHandlers({
+	 ${1:expr}
+	}, warning = function(warn) {
+	  catchedWarn <- "${2:warnMessage}"
+	  if (identical(warn\$message, catchedWarn)) {
+	    tryInvokeRestart("muffleWarning")
+	  }
+	})
+
+snippet linReg
+	# Simple linear reggression
+
+	mod <- lm(${1:y} ~ ${2:x}, data = ${3:data})
+	summary(mod)
+
+	## plot
+	## plot
+	plot_ly(type = "scatter",
+	        mode = "markers",
+	        data = ${3:data},
+	        x = ~ ${2:x},
+	        y = ~ ${1:y},
+	        # color = ~ ,
+	        hoverinfo = 'text',
+	        text = apply(${3:data}, 1, function(l) {
+	          paste(names(l), ":", l, collapse = "\n")
+	        })
+	) %>% add_lines(inherit = FALSE,
+	                x = ~${2:x},
+	                y = fitted(mod),
+	                name = paste("reggression line, r2:", round(summary(mod)\$r.squared, 2))
+	) %>% layout(
+	  title = paste("${1:y} =",
+	                round(mod\$coefficients[1], 2), "+",
+	                round(mod\$coefficients[2], 2), "${2:x}")
+	)
+
+
+	## residual check
+	par(mfrow=c(2,2))
+	plot(mod)
+
+
+# Shiny related
+snippet box
+	shinydashboard::box(
+					width = ${1:width},
+					title = ${2:title},
+					div(
+						# id = "",
+						# class = "divClass",
+						## Add ui here ##
+					)
+	)
+
