@@ -8,6 +8,8 @@ options(useFancyQuotes = FALSE)
 options(scipen = 10) # No scientific notation.
 options(datatable.print.class = TRUE)
 options(datatable.print.keys = TRUE)
+options(repos = c(CRAN = "https://packagemanager.posit.co/cran/latest",
+                  `0-Cloud` = "https://cloud.r-project.org"))
 
 # CRAN repository:
 # options(repos = c(CRAN = "https://cran.ism.ac.jp/"))
@@ -16,18 +18,6 @@ options(datatable.print.keys = TRUE)
 options(Ncpus = max(as.numeric(system("nproc", intern = TRUE)) - 2, 1))
 
 if (interactive()) {
-  # quit without asking to save workspace image
-  tryCatch({
-    utils::assignInNamespace(
-      "q",
-      function(save = "no", ...) {
-        quit(save = save, ...)
-      },
-      "base")
-  }, error = function(err) {
-    message("Can't reassign q()\n")
-    return(1)
-  })
 
   .First <- function() {
     msg <- c()
@@ -137,7 +127,7 @@ if (interactive()) {
 if ("languageserversetup" %in% rownames(utils::installed.packages())) {
   # LanguageServer Setup Start (do not change this chunk)
   # to remove this, run languageserversetup::remove_from_rprofile
-  options(langserver_library = "/home/julien/languageserver-library")
+  options(langserver_library = "~/languageserver-library")
   languageserversetup::languageserver_startup()
   unloadNamespace("languageserversetup")
   # LanguageServer Setup End

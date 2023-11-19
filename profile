@@ -51,6 +51,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export VISUAL='nvim'
   export EDITOR=$VISUAL
+  export SUDO_EDITOR=$VISUAL
 fi
 
 

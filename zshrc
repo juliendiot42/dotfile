@@ -127,6 +127,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias :q='exit'
+
 alias vim="nvim"
 alias vimconf="nvim  -c \"cd ~/.config/nvim\" ~/.config/nvim/"
 alias aptup="sudo apt update && apt list --upgradable"
@@ -138,8 +140,10 @@ alias cp="cp -i"
 alias mv="mv -i"
 
 alias gitfuckit="git commit -a -m \"¯\\_(ツ)_/¯\""
-alias gitlog="git log --oneline"
+alias gitlog="git log --all --decorate --oneline --graph"
 alias checkPorts="sudo lsof -i -P -n | grep LISTEN"
+
+alias R="R --no-save --no-restore"
 
 # anaconda3 overwrite pandoc so:
 # alias pandoc="/usr/bin/pandoc"

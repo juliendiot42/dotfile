@@ -41,7 +41,7 @@ alt = "mod1"
 terminal = guess_terminal()
 webBrowser = 'firefox'
 fileExplorer = 'pcmanfm' #'dolphin'
-appLauncher = 'krunner'
+appLauncher = 'rofi -combi-modi window,drun,ssh,calc -font "firacode nerd 15" -show combi -show-icons' # 'krunner'
 screenShot = 'flameshot gui'
 
 
@@ -261,7 +261,7 @@ for i in range(len(group_names)):
 for i in groups:
     keys.extend(
         [Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Switch to group {}".format(i.name),),
-         Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True), desc="Switch to & move focused window to group {}".format(i.name),),]
+         Key([mod, "control"], i.name, lazy.window.togroup(i.name, switch_group=False), desc="Switch to & move focused window to group {}".format(i.name),),]
     )
 
 
@@ -300,12 +300,12 @@ layouts = [
 ]
 
 
-
+backgroundColor="#00000088"
 widget_defaults = dict(
     font="Ubuntu",
     fontsize=18,
     padding=7,
-    background="#00000088"
+    background=backgroundColor
 )
 extension_defaults = widget_defaults.copy()
 
@@ -331,9 +331,17 @@ class myCapLockIndicator(widget.CapsNumLockIndicator):
 
 
 
+#  ''''
 
 def getWidgetsList():
     widgetList = [
+
+        # widget.OpenWeather(
+        #     app_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        #     cityid = "1850144",
+        #     format = '{icon} {main_temp}°',
+        #     metric = False,
+        # ),
         widget.CurrentLayoutIcon(),
         widget.CurrentLayout(),
         widget.GroupBox(
@@ -366,12 +374,18 @@ def getWidgetsList():
             highlight_radius=3,
             separator_colour="#ffffff",
         ),
-        widget.Spacer(),
+
+        widget.Spacer(
+            # background="#00000000"
+        ),
         widget.Clock(
             font="Ubuntu bold",
             format="%Y-%m-%d %a %H:%M:%S",
+            padding=0,
         ),
-        widget.Spacer(),
+        widget.Spacer(
+            # background="#00000000"
+        ),
 
         widget.Net(
             foreground=colors[7][0],
@@ -381,7 +395,7 @@ def getWidgetsList():
         ),
 
         widget.CPU(
-            format='  {load_percent}%',
+            format='  {load_percent}% - {freq_current}GHz',
             foreground = colors[4],
             # decorations=[
             #     BorderDecoration(
@@ -443,12 +457,18 @@ def getWidgetsList():
             foreground = colors[4],
             fmt = '  {}',
         ),
-        widget.TextBox(
-            fmt = "|{}"
+        # widget.TextBox(
+        #     fmt = "|{}"
+        # ),
+        widget.Sep(
+            foreground="#FFF",
         ),
-        widget.Systray(),
-        widget.TextBox(
-            fmt = "|{}"
+        widget.Systray(
+            padding = 10,
+            # background="#896848",
+        ),
+        widget.Sep(
+            foreground="#FFF",
         ),
         myCapLockIndicator(
             foreground = colors[3],
@@ -477,24 +497,26 @@ screens = [
                     background="#00000000",
                     size=26),
     ),
+
     Screen(
         wallpaper=wallpaperPath,
-        wallpaper_mode='fill', #fill
-        #top=bar.Bar(widgets=[
-        #    widget.GroupBox(
-        #        # active=colors[8],
-        #        # inactive=colors[1],
-        #        rounded=False,
-        #        # highlight_color=colors[1],
-        #        highlight_method="line",
-        #        this_current_screen_border=colors[3],
-        #        this_screen_border=colors [4],
-        #        other_current_screen_border=colors[7],
-        #        other_screen_border=colors[6],
-        #        #foreground=colors[1]
-        #    ),
-        # background="#00000000",
-        #], size=26),
+        wallpaper_mode='fill', # stretch
+        #top=bar.Bar(
+        #        widgets=[widget.GroupBox(
+        #            # active=colors[8],
+        #            # inactive=colors[1],
+        #            rounded=False,
+        #            # highlight_color=colors[1],
+        #            highlight_method="line",
+        #            this_current_screen_border=colors[3],
+        #            this_screen_border=colors [4],
+        #            other_current_screen_border=colors[7],
+        #            other_screen_border=colors[6],
+        #            #foreground=colors[1]
+        #        ),],
+        #    background="#00000000",
+        #    size=26
+        #),
     ),
 ]
 

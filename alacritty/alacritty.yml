@@ -32,7 +32,7 @@ window:
 
   # Background opacity
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.9
+  opacity: 1
 
   # Window title
   title: Alacritty
