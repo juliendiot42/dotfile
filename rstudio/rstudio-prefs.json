@@ -89,5 +89,6 @@
     "terminal_path": "/usr/bin/terminator",
     "show_panel_focus_rectangle": true,
     "native_file_dialogs": true,
-    "source_with_echo": true
+    "source_with_echo": true,
+    "relative_line_numbers": true
 }
